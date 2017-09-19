@@ -20,7 +20,7 @@ from django.conf import settings
 
 from GeneralWebsiteInfo.models import WebsiteColorTheme, WebsiteLayout, NavigationBar, BootScreenLoader
 
-from LazarusII.FbiData import remove_comments
+
 
 CCD = {
     0: '\033[0m',  # end
@@ -102,55 +102,6 @@ class NgIncludedHtmlView(APIView):
             return HttpResponse(html)
 
 
-
-#### 07/12/2017
-class OpenTADataFile(APIView):
-    authentication_classes = (TokenAuthentication,)
-    permission_classes = (AllowAny,)
-    def get(self, request, format=None):
-        # msg = str(request.GET['msg'])
-        parse_path1 = str(request.GET['encoded_path']).replace('_SLSH_', '/')
-        file_type = str(request.GET['type'])
-        title = str(request.GET['title'])
-        file_path = '/usr/src/persistent/' + parse_path1 + file_type
-
-        try:
-            try:
-                print('opening file...')
-                print(file_path)
-                fbi_file = open(file_path, 'r', errors='replace')
-
-                print('file was opened successfully.')
-
-                html1 = '<md-dialog><form ng-cloak>'
-                html2_start = '<md-toolbar><div class="md-toolbar-tools"><h2>TITLE_DIALOG_HEADER</h2><span flex></span>'
-                html3 = '<md-button class="md-icon-button" ng-click="cancel()">' + \
-                        '<md-icon md-svg-src="icon-hexagon" aria-label="Close dialog"></md-icon></md-button>'
-                print('1...')
-                html4_end = '</div></md-toolbar><md-dialog-content><div class="md-dialog-content">'
-                html5 = '</div></md-dialog-content>'
-                dialog_actions = '<md-dialog-actions layout="row"><span flex></span>' + \
-                                 '<md-button ng-click="answer(\'not useful\')">Cancel</md-button>' + \
-                                 '<md-button ng-click="answer(\'useful\')">Add To Current Mod</md-button>' + \
-                                 '</md-dialog-actions></form></md-dialog>'
-                print('2...')
-                content_head = html1 + html2_start + html3 + html4_end
-                content_foot = html5 + dialog_actions
-
-                read_file_str = content_head.replace('TITLE_DIALOG_HEADER', title) + remove_comments(fbi_file.read())
-                print('3...')
-                # read_file_str = read_file_str.replace(';', '; <br>&emsp;')
-                # read_file_str = read_file_str.replace('{', '{<br>&emsp;')
-                read_file_str += content_foot
-                return HttpResponse(read_file_str)
-                # json_response = {'raw_data': fbi_file.read()}
-
-            except:
-                unitsArray = readFile(unit_path)
-                return Response(unitsArray)
-
-        except:
-            return Response('oh shit')
 
 
 class CustomHtmlGenerator(APIView):

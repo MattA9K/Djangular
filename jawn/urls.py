@@ -52,16 +52,13 @@ urlpatterns = [
     url(r'^GooglePlusOAuthCallback', rest_auth.views.GooglePlusOAuthCallbackView.as_view()),
     url(r'^armprime/', rest_auth.views.index),
     # url(r'^lazarus/', LazarusListUnits.as_view()),
-    url(r'^api.lazarus/', include('lazarus.urls')),
-    url(r'^LazarusII/', include('LazarusII.urls')),
-    url(r'^LazarusIII/', include('LazarusIII.urls')),
     url(r'^SandboxDB/', include('DatabaseSandbox.urls')),
 
     url(r'^dynamic_lazarus_page/', include('dynamic_lazarus_page.urls')),
 
     url(r'^GeneralWebsiteInfo/', include('GeneralWebsiteInfo.urls')),
     url(r'^PhotoGalleryManager/', include('PhotoGalleryManager.urls')),
-    url(r'^LazarusDatabase/', include('LazarusDatabase.urls')),
+
     url(r'^Djangular/', include('Djangular.urls')),
     url(r'^Forum/', include('CommunityForum.urls')),
 

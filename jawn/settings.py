@@ -78,19 +78,19 @@ INSTALLED_APPS = (
     'rest_framework.authtoken',
     'rest_auth',
     'chat',
-    'lazarus',
-    'LazarusII',
+    #'lazarus',
+    #'LazarusII',
     'dynamic_lazarus_page',
     'DatabaseSandbox',
     'PhotoGalleryManager',
     'GeneralWebsiteInfo',
-    'LazarusDatabase',
+    #'LazarusDatabase',
     'Djangular',
     'CommunityForum',
     'ModBuilder',
     'djangular_dashboard',
     'django_filters',
-    'LazarusPublicAssets',
+    #'LazarusPublicAssets',
 )
 #   'dbbackup',
 
@@ -134,7 +134,7 @@ WSGI_APPLICATION = 'jawn.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'jawn5',
+        'NAME': 'jawn',
         'USER': os.environ["POSTGRES_ENV_POSTGRES_USER"],
         'PASSWORD': os.environ["POSTGRES_ENV_POSTGRES_PASSWORD"],
         'HOST': os.environ["POSTGRES_PORT_5432_TCP_ADDR"],

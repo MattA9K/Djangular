@@ -184,7 +184,9 @@ def index(request):
 
     # GET LAZARUS BUILD VERSION:
     bash_cmd = ['git', 'rev-list', '--count', 'master']
-    get_build_cmd = str(subprocess.check_output(bash_cmd))
+    #### Djangular's build before becoming a forked repo from Lazarus was 468
+    current_build = 468 + int(subprocess.check_output(bash_cmd))
+    get_build_cmd = str(current_build)
     current_build_1 = ''
     current_build_2 = ''
     try:
